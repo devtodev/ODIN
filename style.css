@@ -1,0 +1,106 @@
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+
+#titulo {
+  position: absolute;
+  background-color:rgba(255, 255, 255, 0.83);
+  font-size: 28px;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  float:center;
+}
+
+#mapa {
+  height:  100%;
+  width: 100%;
+  float:left;
+}
+#chart_velas {
+  position: absolute;
+  float:right;
+  font-size:12px;
+  top: 36px;
+  right: 0;
+}
+#chart_curva {
+  position: absolute;
+  float:right;
+  font-size:12px;
+  top: 36px;
+  right: 0;
+}
+#chart_defunciones {
+  position: absolute;
+  background-color:rgba(255, 255, 255, 0.90);
+  float:right;
+  font-size:15px;
+  top: 37px;
+  right: 0;
+}
+#pintor {
+  position: absolute;
+  background-color:rgba(255, 255, 255, 0.83);
+  font-size: 18px;
+  text-align: center;
+  float:right;
+  margin: auto;
+  margin-top: 455px;
+  right: 0;
+}
+#tests{
+  position: absolute;
+  background-color:rgba(255, 255, 255, 0.90);
+  top: 0px;
+  font-size:15px;
+  margin: auto;
+  margin-top: 22px;
+  margin-left: 10px;
+}
+#fallecidos{
+  position: absolute;
+  background-color:rgba(255, 255, 255, 0.90);
+  top: 0px;
+  font-size: 22px;
+  text-align: center;
+  margin: auto;
+  margin-top: 55px;
+  margin-left: 10px;
+}
+#acercade{
+  position: absolute;
+  background-color:rgba(255, 255, 255, 0.83);
+  bottom: 0px;
+  height: 20px;
+  left:0px;
+  font-size:14px;
+  text-align: left;
+  margin: auto;
+}
+#botonera {
+  position: absolute;
+  background-color:rgba(255, 255, 255, 0.83);
+  bottom: 0px;
+  height: 23px;
+  font-size:17px;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+}
+#actualizacion {
+  position: absolute;
+  background-color:rgba(255, 255, 255, 0.83);
+  bottom: 0px;
+  height: 20px;
+  right:0px;
+  font-size:14px;
+  text-align: right;
+  margin: auto;
+}
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

@@ -1,3 +1,6 @@
+/**
+ * Mapa COVID
+ */
 var map, zonas, dataTotal, idprovincias, seleccion = "1";
 var queryString = window.location.search, urlParams = new URLSearchParams(queryString);
 TOSHOW = "" != urlParams ? "departamentos" : "provincias";
@@ -12,37 +15,37 @@ var chart;
 var defunciones = {};
 
 function drawChartCurves(contagios, fallecidos) {
-          var now = new Date();
-          var nanio = settings["Fecha actualizacion"]["Datos"].substring(6, 10);
-          var nmes =  settings["Fecha actualizacion"]["Datos"].substring(3, 5);
-          var ndia =  settings["Fecha actualizacion"]["Datos"].substring(0, 2);
-          var dias = [ ['día', 'contagios (x1)', 'fallecidos (x10)'] ];
-          for (var d = new Date(2020, 3, 3); d <= new Date(nanio, nmes - 1, ndia); d.setDate(d.getDate() + 1)) {
-              fecha = d.toLocaleDateString('en-GB').substring(0,5);
-              ncontagios = 0;
-              nfallecidos = 0;
-              if ((contagios != null) && (contagios[fecha] != null))
-              {
-                ncontagios = contagios[fecha];
-              }
-              if ((fallecidos != null) && (fallecidos[fecha] != null))
-              {
-                nfallecidos = fallecidos[fecha] * 10;
-              }
-              registro = [fecha,  ncontagios, nfallecidos];
-              dias.push( registro );
-          }
-          var data = google.visualization.arrayToDataTable(dias);
+    var now = new Date();
+    var nanio = settings["Fecha actualizacion"]["Datos"].substring(6, 10);
+    var nmes =  settings["Fecha actualizacion"]["Datos"].substring(3, 5);
+    var ndia =  settings["Fecha actualizacion"]["Datos"].substring(0, 2);
+    var dias = [ ['día', 'contagios (x1)', 'fallecidos (x10)'] ];
+    for (var d = new Date(2020, 3, 3); d <= new Date(nanio, nmes - 1, ndia); d.setDate(d.getDate() + 1)) {
+        fecha = d.toLocaleDateString('en-GB').substring(0,5);
+        ncontagios = 0;
+        nfallecidos = 0;
+        if ((contagios != null) && (contagios[fecha] != null))
+        {
+        ncontagios = contagios[fecha];
+        }
+        if ((fallecidos != null) && (fallecidos[fecha] != null))
+        {
+        nfallecidos = fallecidos[fecha] * 10;
+        }
+        registro = [fecha,  ncontagios, nfallecidos];
+        dias.push( registro );
+    }
+    var data = google.visualization.arrayToDataTable(dias);
 
-          var options = {
-              'height':360,
-              'width':666,
-             'fontSize': 14,
-             'title':'Lineas de tiempo de contagios y fallecidos de COVID19',
-          };
-          options.chartArea = { left: '10%', top: '10%', width: "95%", height: "66%"};
-          var chart = new google.visualization.LineChart(document.getElementById('chart_curva'));
-          chart.draw(data, options);
+    var options = {
+        'height':360,
+        'width':666,
+        'fontSize': 14,
+        'title':'Líneas de tiempo de contagios y fallecidos del COVID19',
+    };
+    options.chartArea = { left: '10%', top: '10%', width: "95%", height: "66%"};
+    var chart = new google.visualization.LineChart(document.getElementById('chart_curva'));
+    chart.draw(data, options);
 }
 
 function  drawDefunciones(in1) {
@@ -54,7 +57,7 @@ function  drawDefunciones(in1) {
        for (causa in keys) {
          nombre = (keys[causa] != "COVID19")? defunciones["codigos"][keys[causa]] : keys[causa];
          cantidad = defunciones[in1][keys[causa]]
-         mensaje = mensaje + "<tr> <td>"  + cantidad + " </td><td>" + nombre.substring(0, 100) + "</td></tr>";
+         mensaje = mensaje + "<tr> <td>"  + cantidad.toLocaleString() + " </td><td>" + nombre.substring(0, 100) + "</td></tr>";
        }
        mensaje = mensaje + "  </tbody></table>"
        mensaje = mensaje + "<center> <a href = 'https://datos.gob.ar/dataset/salud-defunciones-ocurridas-registradas-republica-argentina/archivo/salud_75621151-2d67-4535-9b69-0f99c6a8cf52'>dataset</a></center> "
@@ -76,7 +79,7 @@ function  drawChartVelas(poblacion, contagiados, ncontagiados, curados, ncurados
         var data = google.visualization.arrayToDataTable(dataInfo, true);
         var porcien =  ncontagiados*100 ;
         porcien = (porcien / poblacion).toFixed(2);
-        var titulo = (poblacion == 0)? '\n Grafico edades min,  max y cuartiles':  formatMoney(poblacion) + ' poblacion total \nEdades min,  max y cuartiles';
+        var titulo = (poblacion == 0)? '\n Gráfico edades min,  max y cuartiles':  formatMoney(poblacion) + ' poblacion total \nEdades min,  max y cuartiles';
 
         var options = {
           'height':360,
@@ -194,10 +197,11 @@ function showData(a) {
       {
         drawChartCurves(a["curvac"], a["curvaf"]);
       }
-      if ((settings != null) && (settings["Fecha actualizacion"] != null)) {
-          fecha = (settings["Fecha actualizacion"]["Datos"] != null) ? "<a href='https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv'>Datos actualizados al " + settings["Fecha actualizacion"]["Datos"] + "</a>" : "";
-        //  document.getElementById("actualizacion").innerHTML = fecha
-      }
+
+    if ((settings != null) && (settings["Fecha actualizacion"] != null)) {
+        fecha = (settings["Fecha actualizacion"]["Datos"] != null) ? "<a href='https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv'>Datos actualizados al " + settings["Fecha actualizacion"]["Datos"] + "</a>" : "";
+        document.getElementById("fecha_actualizacion").innerHTML = fecha;
+    }
 }
 
 function resolverNombre(a) {

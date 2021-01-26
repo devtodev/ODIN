@@ -1,4 +1,3 @@
-<html>
 <?php
 function getRandomStr()
  {
@@ -10,22 +9,25 @@ function getRandomStr()
      return $randstring;
  }
 ?>
+<!doctype html>
+<html lang="es">
 <head>
-  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-  <meta content="utf-8" http-equiv="encoding">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
   <title>Mapa COVID Argentina</title>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174571331-1"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174571331-1"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-gtag('config', 'UA-174571331-1');
-</script>
+  gtag('config', 'UA-174571331-1');
+  </script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
- <script
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSgsWTwfNItv9D4ajY6-KNVpbU0AkzM_E&libraries=&v=weekly&sda=<?php echo date('l jS \of F Y h:i:s A'); ?>"
    defer
  ></script>
@@ -61,48 +63,71 @@ gtag('config', 'UA-174571331-1');
 
 <br/>
 
-<div style = "float:left;">
-  <div  id = "map_windows"class="card border-info mb-3" style="width: 30rem;height: 60rem;">
-    <div class="card-header"><div id = "mapa_titulo">[<a href="javascript:alert('hola');">+</a>]  &nbsp; Mapa</div></div>
-    <div class="card-body" >
-        <div id = "mapa" style = "height: 100%;width: 100%;float:left;"></div>
+<main class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <!--map-->
+            <div  id = "map_windows" class="card border-info mb-3" style="height: 50rem;">
+                <div class="card-header"><div id = "mapa_titulo">[<a href="javascript:alert('hola');">+</a>]  &nbsp; Mapa</div></div>
+                <div class="card-body p0" >
+                    <div id = "mapa" style = "height: 100%;width: 100%;float:left;"></div>
+                </div>
+            </div>
+            <!--map-->
+        </div><!--./col-->
+        <div class="col">
+            <!--age_window-->
+            <div id = "age_windows" class="card border-info mb-3" style="width: 44rem;height: 27rem;">
+                <div class="card-header">Detalle por edades</div>
+                <div class="card-body" id = "chart_velas"  style="width: 44rem;height: 27rem;">
+                </div>
+            </div>
+            <!--age_window-->
+        </div><!--./col-->
+    </div><!--./row-->
+
+
+    <div id = "lines_windows" style=" position: absolute;top:0px;visibility: hidden;">
+    <div class="card border-info mb-3" style="width: 44rem;height: 27rem;">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-11">Líneas de tiempo (Contagios azul, muertes rojo)</div>
+                <div class="col-1">
+                    <span class="text-right"><a onclick="document.getElementById('lines_windows').style.visibility='hidden';" class="text-white">X</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="card-body" id = "chart_curva"  style="width: 44rem;height: 27rem;"></div>
     </div>
-  </div>
- </div>
-<div  style = "float:right;position: relative;margin-right: 50rem;height: 36rem;" >
+    </div>
 
- <div  id = "age_windows" style=" position: absolute;top:10px; width: 44rem;height: 38rem;">
-   <div class="card border-info mb-3" style="width: 44rem;height: 27rem;">
-     <div class="card-header">Detalle por edades</div>
-     <div class="card-body" id = "chart_velas"  style="width: 44rem;height: 27rem;"></div>
-   </div>
- </div>
-
- <div id = "lines_windows" style=" position: absolute;top:0px;visibility: hidden;">
-   <div class="card border-info mb-3" style="width: 44rem;height: 27rem;">
-     <div class="card-header">Lineas de tiempo (Contagios azul, muertes rojo)</div>
-     <div class="card-body" id = "chart_curva"  style="width: 44rem;height: 27rem;"></div>
-   </div>
- </div>
-
-   <div  id = "comparative_windows" style=" position: absolute;top:0px;visibility: hidden;">
-     <div class="card border-info mb-3" style="width: 48rem;height: 55rem;">
-       <div class="card-header">COVID19 Vs. sumatoria total de causas defunciones año 2018</div>
-       <div class="card-body" id = "chart_defunciones"  style="width: 47.8rem;height: 52.5rem;left:1px;background-color:black;"></div>
-     </div>
-   </div>
- </div>
- <div  id = "fallecidos_windows" style="position: absolute;bottom:0px;right: 10;visibility: hidden;">
-   <div class="card border-info mb-3" style="width: 18rem;height: 15rem;">
-     <div class="card-header">COVID19 Vs. sumatoria total de causas defunciones año 2018</div>
-     <div class="card-body" id = "fallecidos"  style="width: 16.5rem;height: 12rem;left:1px;background-color:black;"></div>
-   </div>
- </div>
-
-
-
-  <br/>  <br/>  <br/>  <br/>  <br/>
-  <script src="./mapa.js?<?= getRandomStr(); ?>"></script>
-  <script src="./botonera.js?<?= getRandomStr(); ?>"></script>
+    <div  id="comparative_windows" style=" position: absolute;top:0px;visibility: hidden;">
+        <div class="card border-info mb-3" style="width: 48rem;height: 55rem;">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    COVID19 Vs. sumatoria total de causas defunciones año 2018
+                </div>
+                <div class="col-1">
+                    <span class="text-right"><a onclick="document.getElementById('comparative_windows').style.visibility='hidden';" class="text-white">X</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="card-body" id = "chart_defunciones"  style="width: 47.8rem;height: 52.5rem;left:1px;background-color:black;"></div>
+        </div>
+    </div>
+    </div>
+    <div  id = "fallecidos_windows" style="position: absolute;bottom:0px;right: 10;visibility: hidden;">
+    <div class="card border-info mb-3" style="width: 18rem;height: 15rem;">
+        <div class="card-header">COVID19 Vs. sumatoria total de causas defunciones año 2018</div>
+        <div class="card-body" id = "fallecidos"  style="width: 16.5rem;height: 12rem;left:1px;background-color:black;"></div>
+    </div>
+    </div>
+ </main>
+    <footer class="text-center">
+        <span class="text-white" id="fecha_actualizacion"></span>
+    </footer>
+    <script src="./mapa.js?<?= getRandomStr(); ?>"></script>
+    <script src="./botonera.js?<?= getRandomStr(); ?>"></script>
 </body>
 </html>

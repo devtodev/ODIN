@@ -79,7 +79,7 @@ function  drawChartVelas(poblacion, contagiados, ncontagiados, curados, ncurados
         var data = google.visualization.arrayToDataTable(dataInfo, true);
         var porcien =  ncontagiados*100 ;
         porcien = (porcien / poblacion).toFixed(2);
-        var titulo = (poblacion == 0)? '\n Gráfico edades min,  max y cuartiles':  formatMoney(poblacion) + ' poblacion total \nEdades min,  max y cuartiles';
+        var titulo = (poblacion == 0)? '\n Gráfico edades min,  max y cuartiles':  formatMoney(poblacion) + ' población total \nEdades min,  max y cuartiles';
 
         var options = {
           'height':360,
@@ -257,8 +257,8 @@ function reselecciona(a) {
 function initMap() {
     map = new google.maps.Map(document.getElementById("mapa"),{
         center: {
-            lat: -52,
-            lng: -58
+            lat: -50,
+            lng: -62
         },
         zoom: 3.8
     });

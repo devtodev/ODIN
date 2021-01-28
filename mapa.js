@@ -257,8 +257,8 @@ function reselecciona(a) {
 function initMap() {
     map = new google.maps.Map(document.getElementById("mapa"),{
         center: {
-            lat: -52,
-            lng: -58
+            lat: -50,
+            lng: -62
         },
         zoom: 3.8
     });

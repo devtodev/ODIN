@@ -259,7 +259,7 @@ function reselecciona(a) {
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"),{
         center: {
-            lat: -40,
+            lat: -30,
             lng: -36
         },
         zoom: 4

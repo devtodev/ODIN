@@ -70,7 +70,7 @@ function getRandomStr()
             <div  id = "map_windows" class="card border-info mb-3" style="height: 50rem;">
                 <div class="card-header"><div id = "mapa_titulo">[<a href="javascript:alert('hola');">+</a>]  &nbsp; Mapa</div></div>
                 <div class="card-body p0" >
-                    <div id = "mapa" style = "height: 100%;width: 100%;float:left;"></div>
+                    <div id="mapa" style = "height: 100%;width: 100%;"></div>
                 </div>
             </div>
             <!--map-->
@@ -79,27 +79,22 @@ function getRandomStr()
             <!--age_window-->
             <div id = "age_windows" class="card border-info mb-3" style="width: 44rem;height: 27rem;">
                 <div class="card-header">Detalle por edades</div>
-                <div class="card-body" id = "chart_velas"  style="width: 44rem;height: 27rem;">
+                <div class="card-body" id="chart_velas"  style="width: 44rem;height: 27rem;">
                 </div>
             </div>
             <!--age_window-->
+
+            <!--lines_window-->
+            <div id = "lines_windows">
+                <div class="card border-info mb-3" style="width: 44rem;height: 27rem;">
+                    <div class="card-header">Líneas de tiempo (Contagios azul, muertes rojo)</div>
+                    <div class="card-body" id="chart_curva"  style="width: 44rem;height: 27rem;"></div>
+                </div>
+            </div>
+            <!--lines_window-->
         </div><!--./col-->
     </div><!--./row-->
 
-
-    <div id = "lines_windows" style=" position: absolute;top:0px;visibility: hidden;">
-    <div class="card border-info mb-3" style="width: 44rem;height: 27rem;">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-11">Líneas de tiempo (Contagios azul, muertes rojo)</div>
-                <div class="col-1">
-                    <span class="text-right"><a onclick="document.getElementById('lines_windows').style.visibility='hidden';" class="text-white">X</a></span>
-                </div>
-            </div>
-        </div>
-        <div class="card-body" id = "chart_curva"  style="width: 44rem;height: 27rem;"></div>
-    </div>
-    </div>
 
     <div  id="comparative_windows" style=" position: absolute;top:0px;visibility: hidden;">
         <div class="card border-info mb-3" style="width: 48rem;height: 55rem;">

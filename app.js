@@ -77,7 +77,7 @@ function  drawChartVelas(poblacion, contagiados, ncontagiados, curados, ncurados
         var data = google.visualization.arrayToDataTable(dataInfo, true);
         var porcien =  ncontagiados*100 ;
         porcien = (porcien / poblacion).toFixed(2);
-        var titulo = (poblacion == 0)? '\n Grafico edades min,  max y cuartiles':  formatMoney(poblacion) + ' poblacion total \nEdades min,  max y cuartiles';
+        var titulo = (poblacion == 0)? '\n Grafico edades min,  max y cuartiles':  formatMoney(poblacion) + ' población total \nEdades min,  max y cuartiles';
 
         var options = {
           'height':360,
